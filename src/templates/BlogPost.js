@@ -1,13 +1,14 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { injectResources } from "../hooks/hooks"
 
-export default ({ data }) => {	
+export default ({ data }) => {
 	injectResources (data);
 	let page_id = "post-"+data.wordpressPage.wordpress_id;
-	let page_class = "post-"+data.wordpressPage.wordpress_id+" page type-page status-publish hentry";
-   return (
+	let page_class = "post-"+data.wordpressPage.wordpress_id+" page type-page status-publish hentry";	
+  return (
   <Layout>
     <SEO
       title={data.wordpressPage.title}
@@ -24,11 +25,11 @@ export default ({ data }) => {
 	</div>
   </Layout>
 )
-}  
+}
 
 export const query = graphql`
-  query {
-    wordpressPage(wordpress_id: { eq: 5  }) {
+  query($id: Int!) {
+    wordpressPage(wordpress_id: { eq: $id }) {
       content
 	  slug
       title
@@ -36,9 +37,6 @@ export const query = graphql`
       jsLocal {
         publicURL
       }
-      jsLocalFooter	{
-        publicURL
-      }	 
       cssLocal {
         publicURL
       }
@@ -63,6 +61,6 @@ export const query = graphql`
 				url				
 			}
 	  	}
-	  }	  
+	  }	
     }
   }`
