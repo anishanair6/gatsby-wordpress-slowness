@@ -32,7 +32,7 @@ module.exports = {
       resolve: "gatsby-source-wordpress",
       options: {
         // I have created a dummy site for us to use with the plugins we discussed
-        baseUrl: "10.0.14.70:9980",
+        baseUrl: "localhost",
         protocol: "http",
         hostingWPCOM: false,
         // We will be using some advanced custom fields
