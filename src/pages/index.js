@@ -43,6 +43,7 @@ export const query = graphql`
       slug
       title
       wordpress_id
+      ...EnqueuedScriptsFragment
     }
   }
   ${EnqueuedScriptsFragment}
